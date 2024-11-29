@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_super_parameters, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, use_super_parameters
 
 import 'package:flutter/material.dart';
 import '../country.dart';
@@ -44,7 +44,7 @@ class _CountryCardState extends State<CountryCard> {
     } else {
       await _favoritesService.addToFavorites(widget.country);
     }
-    
+
     setState(() {
       _isFavorite = !_isFavorite;
     });
@@ -62,7 +62,8 @@ class _CountryCardState extends State<CountryCard> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => CountryDetailScreen(country: widget.country),
+              builder: (context) =>
+                  CountryDetailScreen(country: widget.country),
             ),
           );
         },
@@ -74,7 +75,8 @@ class _CountryCardState extends State<CountryCard> {
                 Expanded(
                   flex: 3,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(12)),
                     child: Image.network(
                       widget.country.flag,
                       fit: BoxFit.cover,
@@ -98,7 +100,10 @@ class _CountryCardState extends State<CountryCard> {
                       children: [
                         Text(
                           widget.country.name,
-                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(
                                 fontWeight: FontWeight.bold,
                               ),
                           maxLines: 1,
@@ -107,12 +112,6 @@ class _CountryCardState extends State<CountryCard> {
                         Text(
                           'Capital: ${widget.country.capital}',
                           style: Theme.of(context).textTheme.bodyMedium,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          'Population: ${widget.country.population.toString()}',
-                          style: Theme.of(context).textTheme.bodySmall,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
